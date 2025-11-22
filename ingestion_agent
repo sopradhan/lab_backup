@@ -1,0 +1,307 @@
+"""IngestionAgent - Optimized document ingestion with RBAC and healing integration"""
+import json
+import time
+from pathlib import Path
+from deepagents import create_deep_agent
+from langchain_core.tools import StructuredTool
+from pydantic import BaseModel, Field
+from ..tools.ingestion_tools import (
+    chunk_document_tool, extract_metadata_tool, save_to_vectordb_tool,
+    record_agent_operation_tool, record_agent_memory_tool
+)
+from ..tools.config.loader import ConfigLoader
+from ..config.env_config import EnvConfig
+
+
+class IngestionAgent:
+    """Autonomous document ingestion with RBAC namespace and healing optimization"""
+    
+    def __init__(self, services: dict, config: dict, master_orchestrator=None):
+        self.services = services
+        self.master = master_orchestrator
+        self.name = config.get('name', 'IngestionAgent')
+        self.db_path = EnvConfig.get_db_path()
+        
+        ConfigLoader.set_config_dir(EnvConfig.get_rag_config_path())
+        self.system_prompt = ConfigLoader.get_system_prompt('ingestion_agent')
+        print("ingestion_agent",self.system_prompt )
+        self.chunk_size = config.get('chunk_size', 500)
+        self.chunk_overlap = config.get('chunk_overlap', 50)
+        
+        self.tools = self._create_tools()
+        self.agent = create_deep_agent(
+            tools=self.tools,
+            system_prompt=self.system_prompt,
+            model=services['llm'].get_model()
+        )
+    
+    def _create_tools(self):
+        """Create ingestion tools"""
+        agent = self
+        
+        class SpawnHealerInput(BaseModel):
+            doc_id: str = Field(description="Document to optimize")
+            strategy: str = Field(default="reindex", description="reindex|resample|reembed")
+        
+        def spawn_healing(doc_id: str, strategy: str = "reindex") -> str:
+            if not agent.master:
+                return json.dumps({"success": False, "error": "Master orchestrator not available for spawning HealingAgent"})
+            try:
+                # Spawn HealingAgent with caller context set to IngestionAgent
+                healing_instance = agent.master.spawn_agent('healing', caller_agent='IngestionAgent')
+                result = healing_instance.optimize_document(doc_id, strategy)
+                return json.dumps({
+                    "success": result.get('success', False), 
+                    "strategy": strategy,
+                    "caller": "IngestionAgent"
+                })
+            except Exception as e:
+                return json.dumps({"success": False, "error": str(e), "caller": "IngestionAgent"})
+        
+        return [
+            StructuredTool.from_function(
+                func=lambda text, strategy="recursive": chunk_document_tool.func(
+                    text, strategy, agent.chunk_size, agent.chunk_overlap
+                ),
+                name="chunk_document",
+                description="Split document into chunks"
+            ),
+            StructuredTool.from_function(
+                func=lambda text: extract_metadata_tool.func(text, agent.services['llm']),
+                name="extract_metadata",
+                description="Extract metadata and tags from document"
+            ),
+            StructuredTool.from_function(
+                func=lambda chunks, doc_id, metadata="", rbac_ns="general", healing="": save_to_vectordb_tool.func(
+                    chunks, doc_id, agent.services['llm'], agent.services['vectordb'], 
+                    metadata, rbac_ns, healing
+                ),
+                name="save_optimized",
+                description="Save to vector DB with RBAC namespace and healing suggestions"
+            ),
+            StructuredTool.from_function(
+                func=spawn_healing,
+                name="spawn_healer",
+                description="Spawn healing agent for optimization",
+                args_schema=SpawnHealerInput
+            ),
+        ]
+    
+    def ingest_document(self, file_path: str) -> dict:
+        """Ingest document with RBAC namespace and healing optimization"""
+        start = time.time()
+        try:
+            path = Path(file_path)
+            if not path.exists():
+                return {"success": False, "error": f"File not found: {file_path}"}
+            
+            doc_id = path.stem
+            with open(file_path, 'r', encoding='utf-8') as f:
+                content = f.read()
+            
+            if not content.strip():
+                return {"success": False, "error": "Empty file"}
+            
+            # Step 1: Chunk
+            chunks_json = chunk_document_tool.func(content, 'recursive', self.chunk_size, self.chunk_overlap)
+            chunks_data = json.loads(chunks_json)
+            if not chunks_data.get('success'):
+                return {"success": False, "error": f"Chunking failed"}
+            
+            num_chunks = chunks_data.get('num_chunks', 0)
+            
+            # Step 2: Extract metadata
+            metadata_json = extract_metadata_tool.func(content, self.services['llm'])
+            metadata_data = json.loads(metadata_json)
+            metadata_str = metadata_json if metadata_data.get('success') else ""
+            
+            # Step 3: Get healing suggestions (optional)
+            healing_suggestions = ""
+            if self.master:
+                try:
+                    healing_instance = self.master.spawn_agent('healing', caller_agent='IngestionAgent')
+                    healing_result = healing_instance.suggest_optimization(doc_id, num_chunks)
+                    healing_suggestions = json.dumps(healing_result)
+                except:
+                    pass
+            
+            # Step 4: Determine RBAC namespace from metadata
+            rbac_namespace = "general"
+            if metadata_data.get('success'):
+                doc_type = metadata_data.get('metadata', {}).get('doc_type', 'general')
+                rbac_mapping = {
+                    'technical_doc': 'engineering',
+                    'policy': 'security',
+                    'manual': 'engineering',
+                    'report': 'finance',
+                    'incident': 'security',
+                }
+                rbac_namespace = rbac_mapping.get(doc_type, 'general')
+            
+            # Step 5: Save to vector DB
+            save_result_json = save_to_vectordb_tool.func(
+                chunks_json, doc_id, self.services['llm'], self.services['vectordb'],
+                metadata_str, rbac_namespace, healing_suggestions
+            )
+            save_result = json.loads(save_result_json)
+            if not save_result.get('success'):
+                return {"success": False, "error": f"Save failed"}
+            
+            chunks_saved = save_result.get('chunks_saved', 0)
+            
+            # Step 6: Record operations
+            record_agent_operation_tool.func(
+                agent_name=self.name,
+                operation_type='ingest_document',
+                status='success',
+                doc_id=doc_id,
+                chunks_count=chunks_saved
+            )
+            
+            record_agent_memory_tool.func(
+                agent_name=self.name,
+                memory_key=f'doc_{doc_id}',
+                memory_value=json.dumps({
+                    'chunks': chunks_saved,
+                    'namespace': rbac_namespace,
+                    'metadata_tags': metadata_data.get('metadata', {}) if metadata_data.get('success') else {},
+                    'healing': healing_suggestions != "",
+                    'timestamp': time.time()
+                }),
+                memory_type='context'
+            )
+            
+            execution_ms = int((time.time() - start) * 1000)
+            
+            return {
+                "success": True,
+                "doc_id": doc_id,
+                "chunks_created": num_chunks,
+                "chunks_saved": chunks_saved,
+                "rbac_namespace": rbac_namespace,
+                "healing_optimized": healing_suggestions != "",
+                "execution_ms": execution_ms
+            }
+            
+        except Exception as e:
+            return {
+                "success": False,
+                "error": str(e),
+                "execution_ms": int((time.time() - start) * 1000)
+            }
+    
+    def ingest_directory(self, dir_path: str) -> dict:
+        """Ingest all documents in directory"""
+        path = Path(dir_path)
+        if not path.is_dir():
+            return {"success": False, "error": f"Not a directory: {dir_path}"}
+        
+        results = []
+        for file_path in path.rglob('*.txt'):
+            result = self.ingest_document(str(file_path))
+            results.append({"file": file_path.name, "success": result.get('success')})
+        
+        return {
+            "success": True,
+            "total": len(results),
+            "successful": sum(1 for r in results if r['success']),
+            "results": results
+        }
+    
+    def ingest_document_text(self, text: str, doc_id: str) -> dict:
+        """Ingest text content directly without file"""
+        start = time.time()
+        try:
+            if not text.strip():
+                return {"success": False, "error": "Empty text"}
+            
+            # Step 1: Chunk
+            chunks_json = chunk_document_tool.func(text, 'recursive', self.chunk_size, self.chunk_overlap)
+            chunks_data = json.loads(chunks_json)
+            if not chunks_data.get('success'):
+                return {"success": False, "error": "Chunking failed"}
+            
+            num_chunks = chunks_data.get('num_chunks', 0)
+            
+            # Step 2: Extract metadata (with error handling)
+            try:
+                metadata_json = extract_metadata_tool.func(text, self.services['llm'])
+                metadata_data = json.loads(metadata_json)
+                metadata_str = metadata_json if metadata_data.get('success') else ""
+            except Exception as e:
+                # Use minimal metadata on extraction failure
+                metadata_data = {"success": True, "metadata": {"doc_type": "incident", "title": "Document"}}
+                metadata_str = json.dumps(metadata_data)
+            
+            # Step 3: Get healing suggestions (optional)
+            healing_suggestions = ""
+            if self.master and hasattr(self.master, 'healing_agent'):
+                try:
+                    healing_result = self.master.healing_agent.suggest_optimization(doc_id, num_chunks)
+                    healing_suggestions = json.dumps(healing_result)
+                except:
+                    pass
+            
+            # Step 4: Determine RBAC namespace
+            rbac_namespace = "general"
+            if metadata_data.get('success'):
+                doc_type = metadata_data.get('metadata', {}).get('doc_type', 'general')
+                rbac_mapping = {
+                    'technical_doc': 'engineering',
+                    'policy': 'security',
+                    'manual': 'engineering',
+                    'report': 'finance',
+                    'incident': 'security',
+                }
+                rbac_namespace = rbac_mapping.get(doc_type, 'general')
+            
+            # Step 5: Save to vector DB
+            save_result_json = save_to_vectordb_tool.func(
+                chunks_json, doc_id, self.services['llm'], self.services['vectordb'],
+                metadata_str, rbac_namespace, healing_suggestions
+            )
+            save_result = json.loads(save_result_json)
+            if not save_result.get('success'):
+                return {"success": False, "error": "Save failed"}
+            
+            chunks_saved = save_result.get('chunks_saved', 0)
+            
+            # Step 6: Record operations
+            record_agent_operation_tool.func(
+                agent_name=self.name,
+                operation_type='ingest_document',
+                status='success',
+                doc_id=doc_id,
+                chunks_count=chunks_saved
+            )
+            
+            record_agent_memory_tool.func(
+                agent_name=self.name,
+                memory_key=f'doc_{doc_id}',
+                memory_value=json.dumps({
+                    'chunks': chunks_saved,
+                    'namespace': rbac_namespace,
+                    'healing': healing_suggestions != "",
+                    'timestamp': time.time()
+                }),
+                memory_type='context'
+            )
+            
+            execution_ms = int((time.time() - start) * 1000)
+            
+            return {
+                "success": True,
+                "doc_id": doc_id,
+                "chunks_created": num_chunks,
+                "chunks_saved": chunks_saved,
+                "rbac_namespace": rbac_namespace,
+                "healing_optimized": healing_suggestions != "",
+                "execution_ms": execution_ms
+            }
+            
+        except Exception as e:
+            return {
+                "success": False,
+                "error": str(e),
+                "execution_ms": int((time.time() - start) * 1000)
+            }
