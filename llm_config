@@ -1,0 +1,80 @@
+{
+  "llm_providers": {
+    "openai": {
+      "type": "openai",
+      "api_key_env": "OPENAI_API_KEY",
+      "model": "gpt-4",
+      "temperature": 0.7,
+      "max_tokens": 2000,
+      "enabled": false
+    },
+    "anthropic": {
+      "type": "anthropic",
+      "api_key_env": "ANTHROPIC_API_KEY",
+      "model": "claude-3-sonnet-20240229",
+      "temperature": 0.7,
+      "max_tokens": 2000,
+      "enabled": false
+    },
+    "azure": {
+      "type": "azure",
+      "api_key_env": "sk-******",
+      "api_endpoint": "https://genailab.acme.in/",
+      "model": "azure/genailab-maas-gpt-4o",
+      "temperature": 0.3,
+      "max_tokens": 2000,
+      "enabled": true
+    },
+    "ollama": {
+      "type": "ollama",
+      "base_url": "http://localhost:11434",
+      "model": "qwen2.5:0.5b",
+      "temperature": 0.3,
+      "enabled": true
+    },
+    "huggingface": {
+      "type": "huggingface",
+      "api_key_env": "HUGGINGFACE_API_KEY",
+      "model": "meta-llama/Llama-3.3-70B-Instruct",
+      "temperature": 0.7,
+      "max_tokens": 1024,
+      "enabled": false
+    }
+  },
+  "default_provider": "azure",
+  "embedding_providers": {
+    "sentence_transformers": {
+      "type": "sentence_transformers",
+      "model": "sentence-transformers/all-MiniLM-L6-v2",
+      "enabled": false,
+      "device": "cuda"
+    },
+    "ollama": {
+      "type": "ollama",
+      "base_url": "http://localhost:11434",
+      "model": "nomic-embed-text",
+      "enabled": true
+    },
+    "azure_embedding": {
+      "type": "azure",
+      "api_key_env": "sk-********",
+      "api_endpoint": "https://genailab.acme.in/",
+      "model": "azure/genailab-maas-text-embedding-3-large",
+      "enabled": true
+    },
+    "openai": {
+      "type": "openai",
+      "api_key_env": "OPENAI_API_KEY",
+      "model": "text-embedding-3-small",
+      "enabled": false
+    }
+  },
+  "default_embedding_provider": "azure_embedding",
+  "database": {
+    "db_path": "./data/incident_iq.db",
+    "chroma_persist_dir": "./data/chroma_index"
+  },
+  "cache": {
+    "tiktoken_cache_dir": "./token"
+  }
+}
