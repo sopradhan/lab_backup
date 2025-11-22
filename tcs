@@ -1,0 +1,581 @@
+
+Revision 
+Description
+Section 
+No.
+Rational 
+for Change
+Change type
+(add/modify
+/delete)
+1.0 01-08-2025 First release of 
+the document
+NA NA NA
+
+1. Introduction......................................................................................................................6
+2. Purpose .............................................................................................................................6
+3. Scope.................................................................................................................................6
+4. Overview ...........................................................................................................................6
+5. Eligibility and Registration..............................................................................................7
+5.1. Who Can Participate................................................................................................7
+5.2. Registration Process................................................................................................7
+6. Team Formation...............................................................................................................7
+7. Pre-Event Activities..........................................................................................................8
+7.1. Orientation ...............................................................................................................8
+7.2. Access Provisioning.................................................................................................8
+7.3. AI Lab Onboarding..................................................................................................8
+7.4. Tool & Team Familiarization ..................................................................................8
+8. During the Event..............................................................................................................8
+8.1. Agenda for Match Day............................................................................................8
+8.2. Code of Conduct......................................................................................................9
+8.3. Data Usage & Ethics................................................................................................9
+8.4. Interactions...............................................................................................................9
+8.5. Development Guidelines ........................................................................................9
+8.6. Demo.........................................................................................................................9
+8.6.1. Suggested Flow for Demo............................................................................10
+8.6.2. Time Management Tips ................................................................................10
+8.7. Submission Guidelines..........................................................................................10
+8.8. Evaluation Criteria..................................................................................................10
+9. Escalation & Support ....................................................................................................11
+10. Post-Event Activities..................................................................................................11
+10.1. Awards & Recognition......................................................................................11
+TCS Confidential | 5 
+11. Benefits for Participant..............................................................................................11
+11.1. Leadership Recognition ....................................................................................11
+11.2. Networking.........................................................................................................11
+11.3. Skill Sharpening .................................................................................................11
+11.4. Contribution to Learning Culture ....................................................................12
+11.5. Recognition ........................................................................................................12
+12. Key Milestones & Timeline.......................................................................................12
+12.1. Round 1 Fridays: ................................................................................................12
+12.2. Round 2 Last Friday of the Quarter:................................................................12
+12.3. Quarterly National Final – Residential: ...........................................................12
+12.4. Mega National Finals – 1 Week: ......................................................................12
+13. Annexure.....................................................................................................................13
+13.1. Gen AI Lab Setup...............................................................................................13
+13.2. Preinstalled Software List .................................................................................13
+13.3. Preinstalled Local SLMs List..............................................................................13
+13.4. Python Setup......................................................................................................14
+13.5. List of currently available Models....................................................................14
+13.6. Sample Code- To Test the environment ........................................................14
+13.7. Sample Code- RAG Application.......................................................................15
+13.8. Regional SPOC Details ......................................................................................17
+13.9. Competency Details for Upskilling..................................................................19
+13.10. Frequently Asked Questions (FAQs) ...............................................................19
+TCS Confidential | 6 
+1.Introduction
+AI is redefining how we operate and use technology to create business value. The 
+potential of AI is all encompassing: AI will solve business problems and create new 
+opportunities, transforming how we deliver services to our customers. These are 
+exciting times and each one of us should contribute with our ideas and expertise to 
+realize the potential of AI. tcsAI (to be read as 'TCS to the power of AI') is bringing AI 
+closer to you through AI/GenAI hackathons and in-person labs (AI Fridays) at branch 
+level. It is an intensive, innovation-driven event where participants come together to 
+solve real-world problems using artificial intelligence and machine learning. Over a 
+limited time frame, teams will design, build, and present AI-powered solutions across 
+various domains such as manufacturing, healthcare, finance, sustainability, and more.
+2.Purpose
+This handbook will guide you through everything you need to know to make the most 
+of your hackathon experience. It also outlines the roles, responsibilities, protocols, 
+models, FAQs for participants. Provide resources and references to ensure success.
+3.Scope
+This handbook applies to all participants involved in the AI Friday event.
+4.Overview
+Here is the overview of the complete process at high level. The participant journey in 
+the AI Friday is designed to provide structured engagement, enabling participants to
+effectively collaborate, experiment on real world use case and enriching their own 
+learning experience. If you encounter any issues, please contact your branch SPOC 
+listed in the Annexure. Refer: 13.8
+Figure 1 Participant Journey Map
+TCS Confidential | 7 
+5.Eligibility and Registration
+This section outlines eligibility requirements and registration process.
+5.1. Who Can Participate
+• Open to all associates who have a passion for AI/ML, data science, or 
+problem-solving
+• Pre-requisite - Basic knowledge of Python and LLM is needed. If you lack 
+knowledge in these areas and wish to upskill, please refer to the courses 
+listed in the section. Refer: 13.9
+• Participants can join as individuals or form a team of 5 members, out of 
+which minimum 2 associates should be of Grades C1 or below
+5.2. Registration Process
+• Complete the online registration form at this link - Nomination Form
+• Specifying whether you are nominating a team or registering as an individual.
+• If you are nominating as a team, please include your team’s name, team 
+members’ Employee IDs, your years of experience, preferred date for 
+participation (one of the Friday’s listed), BG Name, TCS Office location, skill 
+set, mobile number with consent, T-shirt size. Please be aware of this date is 
+a preference and your Branch SPOC will confirm the same.
+• For team nominations, ensure that each team member fills out the form 
+separately and refer the same team’s name and team member employee id’s. 
+Mismatch in this will lead to not having the preferred team members. 
+6.Team Formation
+Teams should be diverse in skills and experience, promoting learning and 
+collaboration. Balanced teams often lead to better, well-rounded solutions
+Guidelines:
+• Team size: 5 members out of which minimum 2 associates should be of 
+Grades C1 or below
+• Teams can be self-formed before the event, and all members should mention 
+the same team’s name while registering as mentioned in section 5.2
+• For individual nominations, teams will be randomly formed using AI 
+TCS Confidential | 8 
+7.Pre-Event Activities
+7.1. Orientation
+A structured orientation ensures participants understand the hackathon process, 
+expectations, and available resources.
+Orientation Includes:
+• Overview of event structure and timelines
+• Meet and greet with mentors and organizing team
+• Q&A session to address any participant queries
+Attendance is highly recommended to align with expectations and timelines.
+7.2. Access Provisioning
+• Access will be granted to nominated participants every Monday
+• Ensure you have access to the designated location
+• If you do not have access to the building, raise a 2Office request via Ultimatix 
+7.3. AI Lab Onboarding
+• Once access and login credentials are received, visit the AI Lab at your 
+respective Location. Refer: 13.8
+• Verify your login credentials 
+7.4. Tool & Team Familiarization
+• Explore and get comfortable with the AI tools that will be used during the 
+Hackathon
+• You can use AI lab as playground to learn from Monday to Thursday
+• Also use this as an opportunity to understand/appreciate your fellow team 
+members (those teams formed by AI).
+• Refer the Annexure section for sample code and list of available models
+8.During the Event
+During the event, participant will work closely with mentors for guidance and, 
+support. Mentors will be randomly assigned to each team. This section explains the 
+expectations for interactions, collaboration, and conduct during the event. The event 
+timings provided are indicative. Please connect with your Branch SPOC for specific 
+event timings & details, as they can vary for each branch. 
+8.1. Agenda for Match Day
+# Topic Start Time End Time Duration
+1 Introduction/Networking 2:00 2:30 00:30
+TCS Confidential | 9 
+2 Match Time 2:30 6:30 04:00
+3 Demo 6:30 7:00 00:30
+4 Wrap Up 7:00 7:30 00:30
+8.2. Code of Conduct
+• Maintain ethical behaviour and inclusive communication
+• Respect others’ ideas, time, and effort
+• Avoid the use of proprietary data or unauthorized tools
+• Inform organizers well in advance in case of changes in your availability
+• Adhere to the Tata code of conduct in its entirety 
+• During conflicts organizers decision shall be conclusive
+8.3. Data Usage & Ethics
+• Use only open-source or provided datasets or you can create your own
+synthetic data
+• Ensure responsible AI principles are followed: fairness, accountability, and 
+transparency
+• Cite all datasets and pre-trained models used
+8.4. Interactions
+• Prepare your queries or blockers in advance for effective discussion with 
+mentors
+• Collaborate within team effectively to build the solution and ensure every 
+team member has a role to play. Evaluation criteria will consider this aspect 
+(Refer section 8.8)
+8.5. Development Guidelines
+• Use proper code commenting and modular design
+• Use a popular /scalable Framework to build the solution
+• Choose a Vector database or traditional database wherever applicable
+• Avoid using ChatGPT to craft the entire solution
+• Avoid cloning GitHub repositories for developing the entire solution
+8.6. Demo
+During the final stage of the hackathon, each team will present their AI solution 
+to the jury and audience. This is your opportunity to showcase the problemsolving approach, technical implementation, and the impact of your project —
+concisely and convincingly.
+TCS Confidential | 10 
+Each team will get exactly 5 minutes to present. Ensure that everyone has the 
+opportunity to speak. Time management is critical — plan your demo to highlight 
+the essence of your work effectively.
+8.6.1. Suggested Flow for Demo
+• Introduction (30 sec): Briefly state your team’s name, problem statement, and 
+the objective of your solution.
+• Problem Context (30 sec): What challenge are you solving and why is it 
+important?
+• Solution Overview (1 min): Describe the AI model, approach taken, tools used, 
+and any innovation introduced.
+• Live Demo or Walkthrough (2 min): Demonstrate your working prototype or 
+solution flow with emphasis on usability and impact.
+• Results & Metrics (30 sec): Present performance metrics (e.g., accuracy, 
+precision, AUC), validations, or comparisons with baseline.
+• Conclusion (30 sec): Summarize key outcomes, limitations (if any), and 
+possible future enhancements.
+8.6.2. Time Management Tips
+• Assign a presenter for each flow, rehearse to stay within the time.
+• Avoid spending too much time on theoretical background.
+• Prioritize clarity and flow over technical depth — jury may ask follow-up 
+questions afterward.
+8.7. Submission Guidelines
+Each team must submit their solution within the defined Deadline, and it must 
+include:
+• Source code with README
+• Model notebook(s) or pipeline with explanation
+• Presentation deck containing Problem statement, Solution approach, AI/ML 
+techniques and Challenges Faced
+• Demo video (max 5 minutes) -Optional
+8.8. Evaluation Criteria
+Projects are evaluated on a blend of innovation, impact, and execution.
+Scoring Parameters:
+TCS Confidential | 11 
+• Participation and engagement during sessions
+• Successful completion of hands-on activities
+• Completion of the working application
+• Creativity and innovation in the given projects
+• Participation and demonstration of understanding quizzes and debates
+9.Escalation & Support
+Sometimes challenges arise that participant can't resolve alone. This section provides 
+the protocol for raising concerns or requesting help from organizers.
+• Escalate technical issues or rule violations to the branch SPOC. Refer: 13.8
+10.Post-Event Activities
+After the event, participant may participate in feedback, Demo. This section outlines 
+post-event responsibilities.
+Selected solutions may receive further attention, development support, or exposure.
+10.1. Awards & Recognition
+Top-performing teams as evaluated by the Jury will be duly recognized. 
+11.Benefits for Participant
+Participating in the AI Friday event is not just about gamified playground; it's also a 
+rewarding and enriching learning experience. This section outlines the personal and 
+professional benefits participants gain from participating. 
+11.1. Leadership Recognition
+• Opportunity to be recognized as a domain expert and thought leader within 
+the organization
+11.2. Networking
+• Connect with like-minded professionals, tech leaders, and emerging AI talent 
+across departments or organizations
+11.3. Skill Sharpening
+• Exposure to fresh ideas and problem-solving approaches can help sharpen 
+your own AI/ML skills and perspectives
+• Hands-on experience with AI tools and technologies with an open 
+environment to explore 
+TCS Confidential | 12 
+11.4. Contribution to Learning Culture
+• Be a key part of promoting innovation, continuous learning, and ethical AI 
+practices in your community
+11.5. Recognition
+• Teams that excel and are recognized by the Jury will receive due recognition. 
+12.Key Milestones & Timeline
+To help you plan and stay on track, here’s a snapshot of the key phases and 
+important dates for the TCS AI Fridays Hackathon:
+12.1. Round 1 Fridays:
+• Every Week 10 to 20 New Teams will be identified. Each team will get 1 new 
+real world AI problem
+• Monday to Thursday Pre Match Coaching
+• Friday is the main competition
+• 1 Team qualifies for the next round of Branch Quarter Finals
+12.2. Round 2 Last Friday of the Quarter:
+• Every Quarter, 12 Weekly winning teams from Round 1 Qualifier compete at 
+Branch Quarterly Finals to progress for National Quarterly Finals
+• More Advanced real-world problems will be given to solve
+• 1 Teams each from 12 branches qualify to the Quarter National Final
+12.3. Quarterly National Final – Residential:
+• Every Quarter 12 winning Teams of Quarterly Branch finals from 12 branches 
+will participate
+• Advanced Problem to Solve
+• 1 National Quarter Winners
+• Quarterly Celebration
+12.4. Mega National Finals – 1 Week:
+• Annual Showdown 4 Teams – Winner of each National Quarter Finals
+• 1 Week in person Residential Hackathon
+• 1 National Winning team
+TCS Confidential | 13 
+13.Annexure
+Reference materials to understand infrastructure set up and alignment with 
+event goals.
+13.1. Gen AI Lab Setup
+Laptop pre-loaded with python, VS Code, AI tools, shared folder for team 
+collaboration will be available at AI Lab. These laptops are not in TCS network, you cannot 
+access Teams, Mailbox etc. They have access to open Internet to explore all open AI tools 
+and technologies.
+• Below is the high-level Architecture of the Gen AI Lab Setup
+Figure 2:Gen AI Lab Setup Architecture
+13.2. Preinstalled Software List
+• Python
+• Apache Open Office
+• Microsoft VS Code
+• Ollama
+• Tesseract OCR
+13.3. Preinstalled Local SLMs List
+• Llama-3.2-3b-it (SLM – Chat Model)
+• Gemma-3-4b-it (SLM – Chat Model)
+• Qwen-2.5.1-coder-it (SLM – Chat Model)
+• Deepseek-r1 (SLM – Reasoning Model)
+TCS Confidential | 14 
+• Gte-large (SLM – Embedding Model)
+13.4. Python Setup
+Install Python extension for VS Code and Refer the following link to set the Python 
+version while working in VS Code.
+Click on the Python version displayed on the bottom right corner of the VS Code. Select 
+Python 3.12.8 – Global
+Once selected, you run pip freeze in the VS Code terminal to check the list of preinstalled packages.
+Below is sample for your reference
+13.5. List of currently available Models
+• azure/genailab-maas-gpt-35-turbo
+• azure/genailab-maas-gpt-4o
+• azure/genailab-maas-gpt-4o-mini
+• azure/genailab-maas-text-embedding-3-large
+• azure/genailab-maas-whisper
+• azure_ai/genailab-maas-DeepSeek-R1
+• azure_ai/genailab-maas-DeepSeek-V3-0324
+• azure_ai/genailab-maas-Llama-3.2-90B-Vision-Instruct
+• azure_ai/genailab-maas-Llama-3.3-70B-Instruct
+• azure_ai/genailab-maas-Llama-4-Maverick-17B-128E-Instruct-FP8
+• azure_ai/genailab-maas-Phi-3.5-vision-instruct
+• azure_ai/genailab-maas-Phi-4-reasoning
+13.6. Sample Code- To Test the environment
+!pip install langchain-openai
+TCS Confidential | 15 
+from langchain_openai import ChatOpenAI 
+import os 
+import httpx 
+client = httpx.Client(verify=False)
+llm = ChatOpenAI(
+base_url="https://genailab.tcs.in"
+model = "azure_ai/genailab-maas-DeepSeek-V3-0324",
+api_key="XXXXXXXXXXX ", # Will be provided during event. And this key is for 
+Hackathon purposes only and should not be used for any unauthorized 
+purposes
+http_client = client
+)
+llm.invoke("Hi")
+It should produce welcome message from the LLM
+13.7. Sample Code- RAG Application
+import streamlit as st
+from pdfminer.high_level import extract_text
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_openai import ChatOpenAI, OpenAIEmbeddings
+from langchain_community.vectorstores import Chroma
+from langchain.chains import RetrievalQA
+import tempfile
+import os
+import httpx
+import tiktoken
+tiktoken_cache_dir = "./token"
+TCS Confidential | 16 
+os.environ["TIKTOKEN_CACHE_DIR"] = tiktoken_cache_dir
+client = httpx.Client(verify=False)
+# LLM and Embedding setup
+llm = ChatOpenAI(
+ base_url="https://genailab.tcs.in",
+ model="azure_ai/genailab-maas-DeepSeek-V3-0324",
+ api_key=" YOUR KEY ",
+ http_client=client
+)
+embedding_model = OpenAIEmbeddings(
+ base_url="https://genailab.tcs.in",
+ model="azure/genailab-maas-text-embedding-3-large",
+ api_key=“YOUR KEY",
+ http_client=client)
+st.set_page_config(page_title="RAG PDF Summarizer")
+st.title(" RAG-powered PDF Summarizer")
+upload_file = st.file_uploader("Upload a PDF", type="pdf")
+if upload_file:
+ with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as temp_file:
+ temp_file.write(upload_file.read())
+ temp_file_path = temp_file.name
+ # Step 1: Extract text
+ raw_text = extract_text(temp_file_path)
+ # Step 2: Chunking
+TCS Confidential | 17 
+ text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap
+=200)
+ chunks = text_splitter.split_text(raw_text)
+ # Step 3: Embed and store in Chroma
+ with st.spinner("Indexing document..."):
+ vectordb = Chroma.from_texts(chunks, embedding_model,persist_directory="
+./chroma_index")
+ vectordb.persist()
+ # Step 4: RAG QA Chain
+ #retriever 
+= vectordb.as_retriever(search_type="similarity", search_kwargs={"k": 5})
+ retriever = vectordb.as_retriever()
+ rag_chain = RetrievalQA.from_chain_type(
+ llm=llm,
+ retriever=retriever,
+ return_source_documents=True
+ )
+ # Step 5: Ask summarization prompt
+ summary_prompt = "Please summarize this document based on the key topics:"
+ with st.spinner("Running RAG summarization..."):
+ # result = rag_chain.run(summary_prompt)
+ result = rag_chain.invoke(summary_prompt)
+ st.subheader(" Summary")
+ st.write(result)
+13.8. Regional SPOC Details
+Branch SPOC Emp 
+ID
+SPOC Name Lab Locations
+TCS Confidential | 18 
+Ahmedabad 1. 671041
+2. 172747
+1. Mayank Patel
+2. Priti Vyas
+Block1, Floor 3, ODC-8
+Bangalore 1. 118270
+2. 469133
+1. Savitha Rodrigues
+2. Deepak Singhi
+1. Anchor - TR1 & TR2, 8th Floor
+2. Pioneer - Saranga TR - First Floor
+3. Think campus - TR4, B4 Building
+Chennai 1. 588968 1. Narmada G Siruseri, Signature Tower, 1st Floor, 
+D2 Module
+Hyderabad 1. 112898
+2. 124014
+1. Praveen Vadapally
+2. Sirisha Pera
+1. Synergy Park, MPH, 3F ODC6
+2. Adibatla S4-1-Z11
+Pune 1. 105962
+2. 5700926
+3. 1061926
+1. Varsha Kini
+2. Jyoti Raut
+3. Esther David
+1. SP2 Tower 2 TR1
+2. Commerzone 5th Floor CR
+3. Quadra TR-1
+Mumbai 1. 170866
+2. 336312
+1. Yashasree Barve
+2. Lakshmi 
+Vaidyalingam
+1. TCS Olympus A, 8 E
+2. Powai Ken (TBC)
+Kolkata 1. 111764
+2. 1122453
+1. Sabjukta Ray
+2. Bratati Roy
+Gitanjali Park ODC- 3-B-3
+New Delhi 1. 146663 1. Amit Gupta
+Bhubaneswar 1. 522770
+2. 346219
+3. 163823
+1. Nishipadma 
+Mishra
+2. Biswaranjan Jena
+3. Bijoy Ketan Panda
+Hirakud - 2F-ADC-2B
+Indore 1. 2312426
+2. 355465
+1. Kriyesh Patidar
+2. Shikhar Dadhich
+Ground Floor, L1 Block
+Kochi 1. 142447
+2. 170419
+3. 108149
+1. Arun Narayan 
+Thekkethil
+2. Prasad Panthayil
+3. Reeja George
+"Gurukool", 6th Floor, Vismaya 
+Building, Infopark
+Trivandrum 1. 158296 1. Rakesh Unnee Block B, 2nd floor ODC 4
+Nagpur 1. 333913
+2. 869063
+1. Devashish Rao
+2. Sarang Bhalerao
+EB7, G Floor, ODC C
+Lucknow 1. 107613
+2. 141183
+1. Ambili K
+2. Manish Rajput
+7th Floor, TCS Awadh Park
+Varanasi 1. 143210
+2. 1529363
+1. Ravi Kohli
+2. Dhruv Kumar
+TCS Siddha Complex, Floor 2, 3 & 4 
+Internet Kiosk Rooms
+TCS Confidential | 19 
+13.9. Competency Details for Upskilling 
+To enhance your skills in AI development, please refresh your competencies 
+listed below. Additionally, reach out to your branch TD for other upskilling programs on 
+AI/Gen AI. A foundational understanding in any of these competencies, among others, 
+will enable you to participate effectively in AI Fridays.
+S.No. Course ID Course Name Link
+1. 5386 Digital: Python iEvolve
+2. 5406 Digital: Deep Learning iEvolve
+3. 5407 Digital: Machine Learning iEvolve
+4. 5416 Digital: Artificial Intelligence iEvolve
+5. 6618 Generative AI iEvolve
+6. 62757 Learning REST APIs iEvolve
+7. 83068 Agentic AI Fundamentals: 
+Architectures, Frameworks, 
+and Applications_LinkedIn
+iEvolve
+8. 83071 Agentic AI for Developers: 
+Concepts and Application 
+for Enterprises_LinkedIn
+iEvolve
+13.10. Frequently Asked Questions (FAQs)
+13.10.1. What is the AI Lab? 
+The AI Lab is a collaborative learning and development environment focused on 
+exploring, building, and experimenting with artificial intelligence technologies. The AI 
+Lab hosts essential tools like Jupyter Notebooks, VS Code, Python libraries (e.g., 
+TensorFlow, PyTorch), and shared folder for real-time collaboration with team.
+13.10.2. Who Provides Access to AI Lab?
+Regional SPOC isresponsible for managing and provisioning AI Lab access. Refer: 
+13.8
+13.10.3. What to Expect After Access is Granted?
+Login Details: Sent via email with secure link and password.
+Environment: Pre-configured Laptop with core AI tools and libraries.
+13.10.4. What is the purpose of the Program? 
+The AI Friday aims to foster innovation and problem-solving through the 
+development of AI-powered tools that align with real-world business challenges and 
+emerging technology trends. It’s an opportunity to showcase talent, creativity, and 
+technical expertise.
+TCS Confidential | 20 
+13.10.5. Who can participate?
+Anyone within TCS with passion to solve problem using AI - from beginners to 
+experienced professionals. Basic knowledge of Python and LLMs is needed. 
+13.10.6. Do I need prior experience in AI or programming?
+Yes, participants should understand Python, GenAI
+13.10.7. What if I don’t have experience in Python or GenAI?
+You can connect with Talent Development to upskill yourself.
+13.10.8. What kind of projects or activities will we be working on?
+Projects may range from building ML models and using AI APIs to tackling realworld problems with data-driven solutions
+13.10.9. Is this a team-based or individual event?
+It’s a team event, either you can form your own team and nominate or nominate 
+individually (Refer: 6). If nominated individually, organizers will form a team using 
+power of AI.
+13.10.10. Will resources be provided?
+Yes. Participants will receive Laptop loaded with Python, VS Code, access to 
+open Internet, relevant tools and mentoring support.
+13.10.11. What mindset should I have while building my solution for the AI 
+Hackathon? 
+You should build your solution with an enterprise application development 
+mindset, focusing on scalability, reliability, and maintainability. 
+13.10.12. What tools or platforms will we be using? 
+Common tools include Python, Jupyter Notebooks, TensorFlow, PyTorch, 
+Hugging Face, OpenAI APIs, and GitHub. 
+13.10.13. Will there be any mentorship or support during the Lab? 
+Yes. Mentors will be available during scheduled hours to help with technical, 
+conceptual, and project-related questions. 
+13.10.14. What if I face technical issues during the Lab? 
+A Digital Infrastructure Support (DIS) team will be available to help troubleshoot 
+technical problems. 
+TCS Confidential | 21 
+13.10.15. What frameworks or tools are recommended for building a scalable 
+solution in the AI Hackathon? 
+You should build your solution with an enterprise application development 
+mindset, focusing on scalability, reliability, and maintainability.
+13.10.16. Can I use ChatGPT to craft my entire solution for the AI Hackathon? 
+No, it's recommended to avoid relying entirely on ChatGPT and instead use your 
+own development skills to build a scalable and maintainable solution. 
+13.10.17. Can I use existing GitHub repositories to develop my entire 
+solution? 
+No, it's recommended to avoid cloning or directly using entire GitHub repositories. 
+Instead, use them as a reference or inspiration to build your own solution, 
+demonstrating your development skills and creativity. 
+13.10.18.Can I use external APIs or Model-as-a-Service for my primary solution? 
+No, to ensure a level playing field, please use the underlying infrastructure and 
+models provided for the hackathon. This means avoiding external APIs or Model-asa-Service for your primary solution that will be evaluated.
+13.10.19.Will I get to experiment on latest AI technologies like MCP, GraphDB etc? 
+Organizing committee is exploring all possibilities to bring latest technologies on 
+board for all participant to experiment and explore.
+13.10.20. Will I have another chance to participate in the Hackathon if I don’t make it 
+through the initial rounds? 
+Absolutely. You will be eligible to compete again after a cooling period of one 
+quarter. 
